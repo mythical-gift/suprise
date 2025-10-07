@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Your Mythical Birthday Gift! ✨</title>
+    <!-- Load Google Fonts for a Disney-esque feel --><link href="https://fonts.googleapis.com/css2?family=Bangers&family=Permanent+Marker&family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind theme for custom colors and font --><script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'midnight-navy': '#0A1931',    // Deep, dark blue/navy for the sky
+                        'zeus-gold': '#FACA16',        // Pure gold for divine elements
+                        'celestial-blue': '#407BFF',   // Shimmering light blue for highlights
+                        'shadow-dark': '#071223',      // Even darker shadow for depth
+                        'hera-purple': '#800080',      // A deep purple accent
+                    },
+                    fontFamily: {
+                        // Use these for titles and highlight text
+                        'heroic': ['Bangers', 'cursive'],
+                        'marker': ['Permanent Marker', 'cursive'],
+                        // General text font
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    keyframes: {
+                        bounceIn: {
+                            '0%, 20%, 40%, 60%, 80%, 100%': { transitionTimingFunction: 'cubic-bezier(0.215, 0.610, 0.355, 1.000)' },
+                            '0%': { opacity: '0', transform: 'scale3d(0.3, 0.3, 0.3)' },
+                            '20%': { transform: 'scale3d(1.1, 1.1, 1.1)' },
+                            '40%': { transform: 'scale3d(0.9, 0.9, 0.9)' },
+                            '60%': { opacity: '1', transform: 'scale3d(1.03, 1.03, 1.03)' },
+                            '80%': { transform: 'scale3d(0.97, 0.97, 0.97)' },
+                            '100%': { opacity: '1', transform: 'scale3d(1, 1, 1)' }
+                        },
+                        pulseFast: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.6' }
+                        },
+                        rock: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '25%': { transform: 'rotate(5deg)' },
+                            '50%': { transform: 'rotate(-5deg)' },
+                            '75%': { transform: 'rotate(5deg)' },
+                            '100%': { transform: 'rotate(0deg)' },
+                        },
+                        // NEW: Keyframe for bubble movement
+                        bubbleFloat: {
+                            '0%': { backgroundPosition: '0% 0%' },
+                            '50%': { backgroundPosition: '100% 100%' },
+                            '100%': { backgroundPosition: '0% 0%' }
+                        }
+                    },
+                    animation: {
+                        bounceIn: 'bounceIn 1s ease-out both',
+                        pulseFast: 'pulseFast 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        rock: 'rock 1s ease-in-out infinite',
+                        // NEW: Apply bubble animation
+                        bubbleFloat: 'bubbleFloat 25s ease infinite alternate',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom styles for animation and look --><style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        body {
+            /* Base dark background color */
+            background-color: #071223; 
+            
+            /* Multiple radial gradients for floating "bubbles" */
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(64, 123, 255, 0.4) 0%, rgba(10, 25, 49, 0) 50%), /* Celestial Blue */
+                radial-gradient(circle at 70% 80%, rgba(250, 202, 22, 0.3) 0%, rgba(10, 25, 49, 0) 60%), /* Zeus Gold */
+                radial-gradient(circle at 40% 50%, rgba(128, 0, 128, 0.2) 0%, rgba(10, 25, 49, 0) 50%); /* Hera Purple */
+            
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; 
+            
+            /* Setup for bubble animation */
+            background-size: 300% 300%;
+            animation: bubbleFloat 25s ease infinite alternate;
+        }
+
+        .hero-bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Pattern in subtle dark blue (Restored) */
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23407BFF' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zm0 17v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 17v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 17v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM12 6v-4H10v4H6v2h4v4h2V8h4V6h-4zm0 17v-4H10v4H6v2h4v4h2v-4h4v-2h-4zm0 17v-4H10v4H6v2h4v4h2v-4h4v-2h-4zm0 17v-4H10v4H6v2h4v4h2v-4h4v-2h-4zM48 6v-4h-2v4h-4v2h4v4h2V8h4V6h-4zm0 17v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 17v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 17v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); 
+            opacity: 0.15;
+            z-index: 0;
+            /* NEW: Subtle gold shadow to make pattern look like distant sparks/shimmer */
+            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.4));
+        }
+
+        .card-container {
+            transition: opacity 1s ease-in-out, transform 0.8s ease-out;
+            opacity: 0;
+            transform: translateY(40px) scale(0.9);
+            position: relative;
+            z-index: 10;
+        }
+
+        .revealed {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            animation: bounceIn 1s ease-out both;
+        }
+
+        .button-shadow {
+            /* Shadow using the darkest midnight blue (Restored) */
+            box-shadow: 0 6px 0px 0px #071223, 0 8px 15px rgba(0,0,0,0.5);
+            position: relative;
+            top: 0;
+            transition: all 0.15s ease-out;
+        }
+        .button-shadow:active {
+            box-shadow: 0 2px 0px 0px #071223, 0 4px 10px rgba(0,0,0,0.3);
+            top: 4px;
+        }
+
+        /* Heroic ticket icon style */
+        .ticket-icon {
+            filter: drop-shadow(0 4px 3px rgba(0,0,0,0.3));
+        }
+
+        /* Confetti Canvas */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+    </style>
+    <!-- Confetti JS Library --><script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <!-- Background pattern layer --><div class="hero-bg-pattern"></div>
+
+    <!-- PASSWORD GATE: This overlay covers the entire content until the correct password is entered --><div id="password-gate" class="fixed inset-0 z-50 flex items-center justify-center bg-midnight-navy/95 backdrop-blur-sm transition-opacity duration-1000">
+        <div class="bg-white p-8 rounded-3xl shadow-2xl border-4 border-zeus-gold text-center max-w-sm w-full animate-bounceIn">
+            <h2 class="text-4xl font-heroic text-midnight-navy mb-4">STOP! MORTAL!</h2>
+            <p class="text-gray-700 font-marker mb-6">Only the chosen one may enter Mount Olympus...</p>
+            <input type="password" id="password-input" placeholder="Enter the secret word" class="w-full p-3 mb-4 rounded-lg border-2 border-celestial-blue focus:border-hera-purple focus:ring-hera-purple text-gray-800 text-center font-sans">
+            <button id="password-submit" class="button-shadow bg-hera-purple hover:bg-hera-purple/90 text-zeus-gold font-heroic py-3 px-6 rounded-full text-xl transition duration-300 border-b-4 border-shadow-dark">
+                PROVE YOUR WORTH
+            </button>
+            <p id="password-error" class="text-red-600 font-marker mt-3 hidden">Hades laughs at your attempt! Try again.</p>
+        </div>
+    </div>
+
+    <!-- Main Application Container (Hidden by password gate initially) --><div id="app" class="p-4 w-full max-w-lg mx-auto relative z-10 opacity-0 pointer-events-none transition-opacity duration-1000">
+
+        <!-- Initial Birthday Message (Icon removed) --><div id="initial-message" class="text-center transition-opacity duration-1000">
+            <!-- Birthday Cake Icon REMOVED -->
+
+            <h1 class="text-7xl md:text-9xl font-heroic text-zeus-gold leading-none mb-4 animate-pulseFast drop-shadow-lg [text-shadow:0_4px_6px_#0A1931,0_0_15px_#FACA16]"><!-- Dark Shadow/Gold Glow (Restored) -->
+                HAPPY BIRTHDAY!
+            </h1>
+            <p class="text-xl md:text-2xl font-marker text-celestial-blue mb-12 drop-shadow">A truly mythical gift awaits you...</p>
+
+            <button 
+                id="reveal-button" 
+                class="button-shadow bg-hera-purple hover:bg-hera-purple/90 text-zeus-gold font-heroic py-4 px-10 rounded-full text-2xl md:text-3xl transition duration-300 transform hover:scale-105 active:scale-95 border-b-8 border-shadow-dark"
+            >
+                ⚡️ REVEAL YOUR DESTINY! ⚡️
+            </button>
+        </div>
+
+        <!-- Hidden Gift Reveal Card --><div id="gift-card" class="card-container hidden bg-white shadow-2xl rounded-3xl p-6 md:p-10 border-4 border-zeus-gold relative overflow-hidden">
+            <!-- Subtle background gradient inside the card --><div class="absolute inset-0 bg-gradient-to-br from-celestial-blue/30 to-midnight-navy/10 blur-xl"></div>
+            
+            <div class="text-center mb-6 relative z-10">
+                <!-- Double Lightning Bolt Emoji -->
+                <p class="text-6xl mb-4 animate-rock drop-shadow-md">⚡️⚡️</p>
+                
+                <!-- NOTE: Added ID and cursor-pointer to hint at the secret -->
+                <h2 id="gift-title" class="text-5xl font-heroic text-midnight-navy leading-tight drop-shadow-md cursor-pointer hover:text-hera-purple transition duration-200">A Mighty Gift!</h2>
+                <p class="text-xl font-marker text-hera-purple mt-2 drop-shadow">Your adventure begins!</p>
+            </div>
+
+            <p class="text-gray-700 text-lg mb-8 text-center border-t border-zeus-gold pt-4 relative z-10">
+                Prepare for an epic night at <br><span class="font-heroic text-celestial-blue text-2xl">THE HERCULES MUSICAL!</span>
+                <br>May your wishes come true and your destiny be fulfilled!
+            </p>
+
+            <!-- Ticket Download Section --><div class="space-y-4 mb-8 relative z-10">
+                <p class="text-lg font-marker text-gray-700 text-center">
+                    Claim your place among the gods:
+                </p>
+
+                <!-- Ticket 1 Link (Albert) -->
+                <a id="ticket-link-1" href="#" target="_blank" 
+                   class="flex items-center justify-between p-4 bg-midnight-navy text-white rounded-xl shadow-lg hover:bg-shadow-dark transition duration-300 transform hover:scale-[1.02] border-b-4 border-shadow-dark">
+                    <span class="font-semibold font-marker text-lg text-zeus-gold">Albert's Big Birthday Bolt!</span>
+                    <!-- UPDATED: Star Emoji -->
+                    <span class="text-2xl ml-2" role="img" aria-label="Star">⭐️</span>
+                </a>
+
+                <!-- Ticket 2 Link (Harry) -->
+                <a id="ticket-link-2" href="#" target="_blank" 
+                   class="flex items-center justify-between p-4 bg-midnight-navy text-white rounded-xl shadow-lg hover:bg-shadow-dark transition duration-300 transform hover:scale-[1.02] border-b-4 border-shadow-dark">
+                    <span class="font-semibold font-marker text-lg text-zeus-gold">Harry's Mythical Birthday Ticket!</span>
+                    <!-- UPDATED: Star Emoji -->
+                    <span class="text-2xl ml-2" role="img" aria-label="Star">⭐️</span>
+                </a>
+
+                <!-- Ticket 3 Link (George - Hidden Secret) -->
+                <a id="ticket-link-3" href="#" target="_blank" 
+                   class="flex items-center justify-between p-4 bg-midnight-navy text-white rounded-xl shadow-lg transition duration-500 transform hover:scale-[1.02] border-b-4 border-shadow-dark opacity-0 hidden"
+                   style="transition: opacity 0.5s ease, transform 0.3s ease;">
+                    <span class="font-semibold font-marker text-lg text-zeus-gold">Scooby Snack for George!</span>
+                    <!-- UPDATED: Star Emoji -->
+                    <span class="text-2xl ml-2" role="img" aria-label="Star">⭐️</span>
+                </a>
+            </div>
+
+            <p class="text-sm text-center text-gray-600 mt-6 pt-4 border-t border-zeus-gold relative z-10">
+                Remember your training, save these tickets, and prepare for glory!
+            </p>
+        </div>
+    </div>
+
+    <!-- Confetti Canvas (will be initialized by JS) --><canvas id="confetti-canvas"></canvas>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- CONSTANTS ---
+            const SECRET_PASSWORD = 'mythos'; // <<< SET YOUR PASSWORD HERE (UPDATED)
+
+            // --- HTML ELEMENTS ---
+            const passwordGate = document.getElementById('password-gate');
+            const passwordInput = document.getElementById('password-input');
+            const passwordSubmit = document.getElementById('password-submit');
+            const passwordError = document.getElementById('password-error');
+            const mainApp = document.getElementById('app'); // Main content div
+
+            const initialMessage = document.getElementById('initial-message');
+            const revealButton = document.getElementById('reveal-button');
+            const giftCard = document.getElementById('gift-card');
+            const ticketLink1 = document.getElementById('ticket-link-1');
+            const ticketLink2 = document.getElementById('ticket-link-2');
+            const ticketLink3 = document.getElementById('ticket-link-3');
+            const giftTitle = document.getElementById('gift-title');
+            const confettiCanvas = document.getElementById('confetti-canvas');
+
+            // --- TICKET URLS ---
+            // These paths assume the PDF files are in the same folder as this HTML file.
+            const TICKET_URL_1 = 'Happy Birthday Albert!! <3.pdf'; 
+            const TICKET_URL_2 = 'Happy Birthday Harry!! <3.pdf'; 
+            const TICKET_URL_3 = 'Georges_ticket.pdf'; 
+
+            // Set the actual links on load
+            ticketLink1.href = TICKET_URL_1;
+            ticketLink2.href = TICKET_URL_2;
+            ticketLink3.href = TICKET_URL_3;
+
+            // Initialize confetti instance
+            const myConfetti = confetti.create(confettiCanvas, {
+                resize: true,
+                useWorker: true
+            });
+
+            // --- CORE GIFT REVEAL LOGIC (formerly inside DOMContentLoaded) ---
+            
+            /**
+             * Triggers a heroic confetti burst.
+             */
+            function fireConfetti() {
+                const defaults = {
+                    spread: 360,
+                    ticks: 100,
+                    gravity: 0.8,
+                    decay: 0.93,
+                    startVelocity: 30,
+                    shapes: ['circle', 'square'],
+                    scalar: 1,
+                    // Colors for Midnight Navy, Gold, and Celestial Blue 
+                    colors: ['#FFD700', '#0A1931', '#407BFF', '#FFFFFF'] 
+                };
+
+                myConfetti({ ...defaults, particleCount: 80, scalar: 1.2, origin: { y: 0.6 } });
+                myConfetti({ ...defaults, particleCount: 50, angle: 60, spread: 55, origin: { x: 0, y: 0.7 } });
+                myConfetti({ ...defaults, particleCount: 50, angle: 120, spread: 55, origin: { x: 1, y: 0.7 } });
+            }
+
+            /**
+             * Handles the gift reveal interaction (triggered by the main button).
+             */
+            revealButton.addEventListener('click', () => {
+                // 1. Fire the confetti!
+                fireConfetti();
+
+                // 2. Hide the initial message gracefully
+                initialMessage.style.opacity = '0';
+                initialMessage.style.transform = 'translateY(-20px)';
+
+                // 3. Wait for the fade-out to complete (1000ms from CSS transition)
+                setTimeout(() => {
+                    initialMessage.classList.add('hidden');
+
+                    // 4. Show the gift card
+                    giftCard.classList.remove('hidden');
+
+                    // 5. Trigger the reveal animation (fade-in and slide-up/bounce)
+                    setTimeout(() => {
+                        giftCard.classList.add('revealed');
+                    }, 50);
+
+                }, 1000); 
+            });
+
+            /**
+             * Secret feature: Click the main title to reveal George's ticket.
+             */
+            giftTitle.addEventListener('click', () => {
+                if (ticketLink3.classList.contains('hidden')) {
+                    // 1. Remove hidden class to allow layout to account for it
+                    ticketLink3.classList.remove('hidden');
+                    
+                    // 2. Timeout to ensure display change takes effect before starting opacity transition
+                    setTimeout(() => {
+                        ticketLink3.classList.remove('opacity-0');
+                    }, 10);
+                    
+                    // Optional: Give a visual cue that the secret was found
+                    giftTitle.classList.remove('text-midnight-navy');
+                    giftTitle.classList.add('text-zeus-gold', 'text-shadow-lg', 'animate-rock');
+                    giftTitle.innerText = "A MIGHTY GIFT! (Bonus Found!)";
+
+                } else {
+                    // If it's already shown, fire a small, celebratory burst
+                    myConfetti({
+                        particleCount: 25,
+                        angle: 90,
+                        spread: 40,
+                        origin: { y: 0.5, x: 0.5 }
+                    });
+                }
+            });
+
+
+            // --- PASSWORD GATE LOGIC ---
+
+            function allowEntry() {
+                // 1. Fade out the password gate
+                passwordGate.style.opacity = '0';
+                
+                // 2. Fade in the main app content
+                mainApp.classList.remove('opacity-0', 'pointer-events-none');
+                
+                // 3. Hide the gate element completely after transition
+                setTimeout(() => {
+                    passwordGate.classList.add('hidden');
+                }, 1000); // Wait for transition duration
+            }
+
+            function checkPassword() {
+                const enteredPassword = passwordInput.value.trim().toLowerCase();
+                
+                if (enteredPassword === SECRET_PASSWORD.toLowerCase()) {
+                    passwordError.classList.add('hidden');
+                    allowEntry();
+                } else {
+                    passwordError.classList.remove('hidden');
+                    passwordInput.value = ''; // Clear input on failure
+                    passwordInput.focus();
+                }
+            }
+
+            // Event listener for button click
+            passwordSubmit.addEventListener('click', checkPassword);
+
+            // Event listener for "Enter" key press
+            passwordInput.addEventListener('keypress', (event) => {
+                if (event.key === 'Enter') {
+                    event.preventDefault(); // Prevent default form submit action
+                    checkPassword();
+                }
+            });
+            
+            // Set focus on input initially
+            passwordInput.focus();
+
+        });
+    </script>
+</body>
+</html>
